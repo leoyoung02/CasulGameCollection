@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style/reset.css" />
+    <link rel="stylesheet" href="./src/style/style.css" />
+    <title>Snake</title>
+  </head>
+  <body>
+    <main>
+      <div class="main_div">
+        <!-- <div style="position: fixed; "><h1 class="name_h1">Snake</h1></div> -->
+         <div style="color:gray ; margin-left: 10px; margin-top: 10px;"><p>Use the arrows on the keyboard</p>
+         </div>
+        <div>
+          <h2 class="score_h2">Your Score: <span class="score">0</span></h2>
+        </div>
+        <div class="canvas_div">
+          <div class="start_pause">
+            <div>
+              <p class="startBtn">Start</p>
+              <p id="endScore"></p>
+            </div>
+          </div>
+          <canvas id="canvas" width="400" height="400"></canvas>
+        </div>
+        <div class="arrowDiv ">
+          <div class="firstArrow">
+            <div data-keyCode="38" class="arrowBtn"><img src="./src/icons/arrowUp.svg" alt="arrow-icon" /></div>
+          </div>
+          <div class="secondArrow">
+            <div data-keyCode="37" class="arrowBtn" >  <img src="./src/icons/arrowLeft.svg" alt="arrow-icon" /></div>
+            <div data-keyCode="39" class="arrowBtn"><img src="./src/icons/arrowRight.svg" alt="arrow-icon" /></div>
+          </div>
+          <div class="thirdArrow">
+            <div data-keyCode="40" class="arrowBtn"><img src="./src/icons/arrowDown.svg" alt="arrow-icon" /></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./src/js/main.js"></script>
+  </body>
+</html>

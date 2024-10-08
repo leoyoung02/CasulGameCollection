@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/jogo.css">
+    <title>Breakout</title>
+</head>
+<body>
+    <header>
+        <div class="container__button">
+            <button onclick="location.href='inicio.html'">
+                <span><ion-icon name="caret-back-outline"></ion-icon></span>
+                Voltar 
+            </button>
+        </div>
+        <h1 class="title">Breakout</h1>
+    </header>
+
+    <div class="container__points">
+        <p>Pontuação:</p>
+        <div class="points">
+            <div class="p1">
+                Jogador 1: <span id="pontos1">0</span>
+            </div>
+            <div class="p2">
+                Jogador 2: <span id="pontos2">0</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="container_canvas">
+            <canvas id="canvas" width="1100" height="500"></canvas>
+        </div>
+    </div>
+
+    <audio id="musicaFundo" src="../assets/sound/musica.mp3" autoplay loop></audio>
+    <script src="../assets/script/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

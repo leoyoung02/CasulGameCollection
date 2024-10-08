@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Raveendra Mannam">
+    <meta name="description" content="Black Jack Game">
+    <title>Black Jack Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/favicon.ico" type="images/x-icon">
+</head>
+<body>
+    <main class="main">
+        <h1 class="title">&#9824; Blackjack &#9824;</h1>
+        <h3 id="content">Want to play a round??</h3>
+        <p id="card">Cards:</p>
+        <p id="sum">Sum:</p>
+        <button id="start-game" onclick="startGame()">START GAME <span id="start-symbol">&#9094;</span></button>
+        <button id="new-card" onclick="newCard()">NEW CARD <span id="card-symbol">&#127150;</span></button>
+        <p id="user"></p>
+    </main>
+    <aside>
+        <details>
+            <summary class="instructions">Checkout the game Instructions</summary>
+            <p class="steps">1.Click on Start Game button to start the game</p>
+            <p class="steps">2.It will draw two cards intially, if the sum equals to 21 then you will get a BlackJack and your chips will get increased by 2times</p>
+            <p class="steps">3.If the sum less is than 21, you will get a chance to draw another card, you can draw n-number of cards till you get Blackjack</p>
+            <p class="steps">4.If the sum is greater than 21, you will get out from the Game at any point of time and your chips will get reduced by 2times</p>
+        </details>
+    </aside>
+    <script src="index.js"></script>
+</body>
+</html>

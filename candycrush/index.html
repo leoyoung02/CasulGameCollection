@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy Crush Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <div class="h">
+        <h5>Max 50 Score Needed To Win</h5>
+    <h5 >Timer: <span id="time">0</span></h5>
+    <h5 >Score: <span id="score">0</span></h5>
+</div>
+<div class="h0">
+    <h5 title="Realod"> <i class="fa-solid fa-rotate-right" id="rel"  ></i></h5>
+    <h5><i class="fas fa-volume-mute" id="mut"></i></h5>
+
+</div>
+    <audio loop id="aud">
+        <source src="img/candy_crush_loop1.mp3"  type="audio/mpeg">
+    </audio>
+    <audio loop id="aud1">
+        <source src="img/candycrushcombo4.mp3"  type="audio/mpeg">
+    </audio>
+    <div class="board" id="board"></div>
+    <div class="board board1" id="board1">
+    <button onclick="ply()" class="str">start</button>
+</div>
+<script src="app.js"></script>
+</body>
+
+</html>

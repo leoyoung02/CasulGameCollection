@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiny5&display=swap');
+
+* {
+  font-family: "Tiny5", sans-serif;  
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header .container__button {
+    position: absolute;
+    top: 5%;
+    left: 1%;
+}
+
+header button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 3rem;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+header button span {
+    margin-top: 10px;
+}
+
+header button:hover {
+    animation: colorChange 3s infinite;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3%;
+}
+
+.container_canvas {
+    border: 5px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(45deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+}
+
+canvas {
+    display: block;
+}
+
+.title {
+    font-size: 100px;
+    background: linear-gradient(45deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+    background: transparent;
+    text-align: center;
+    animation: colorChange 5s infinite;
+    margin-bottom: 2%;
+}
+
+.container__points {
+    font-size: 2rem;
+    width: 100%;
+}
+
+.container__points p {
+    text-align: center;
+}
+
+.container__points span {
+    animation: colorChange 5s infinite alternate;
+
+}
+
+.points {
+    display: flex;
+    justify-content: center;
+    gap: 30%;
+}
+
+@keyframes colorChange {
+    0% {
+        color: #ff0000;
+    }
+    14% {
+        color: #ff9900;
+    }
+    28% {
+        color: #ffff00;
+    }
+    42% {
+        color: #00ff00;
+    }
+    57% {
+        color: #00ffff;
+    }
+    71% {
+        color: #0000ff;
+    }
+    85% {
+        color: #ff00ff;
+    }
+    100% {
+        color: #ff0000;
+    }
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;;
+    animation: colorChange 5s infinite alternate;
+}
+.names {
+    font-size: 18px;
+    font-weight: bold;
+}
