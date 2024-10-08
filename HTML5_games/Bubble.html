@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Burst Game</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        #game-container {
+            max-width: 1080px;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .screen {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #fff;
+            justify-content: center;
+            align-items: center;
+        }
+        .active {
+            display: flex;
+        }
+        #splash-screen {
+            flex-direction: column;
+        }
+        #splash-screen h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn:active {
+            background: #0056b3;
+        }
+        #login-screen input {
+            padding: 10px;
+            margin: 5px;
+            font-size: 1em;
+            width: 200px;
+        }
+        #game-screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: #87CEEB;
+        }
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1.5em;
+        }
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .popup.active {
+            display: flex;
+        }
+        .popup h2 {
+            margin-bottom: 10px;
+        }
+        .bottom-buttons {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .bottom-buttons .btn {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="splash-screen" class="screen active">
+            <h1>Bubble Burst Game</h1>
+            <button class="btn" onclick="showLoginScreen()">Play</button>
+            <div class="bottom-buttons">
+                <button class="btn" onclick="showPopup('audio-popup')">Audio</button>
+                <button class="btn" onclick="showPopup('share-popup')">Share</button>
+                <button class="btn" onclick="showPopup('rewards-popup')">Rewards</button>
+                <button class="btn" onclick="showPopup('leaderboard-popup')">Leaderboard</button>
+            </div>
+        </div>
+        <div id="login-screen" class="screen">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button class="btn" onclick="login()">Login</button>
+        </div>
+        <div id="game-screen" class="screen">
+            <div id="score">0</div>
+            <canvas id="gameCanvas"></canvas>
+        </div>
+        <div id="audio-popup" class="popup">
+            <h2>Audio Settings</h2>
+            <button class="btn" onclick="toggleAudio()">Toggle Audio</button>
+            <button class="btn" onclick="closePopup('audio-popup')">Close</button>
+        </div>
+        <div id="share-popup" class="popup">
+            <h2>Share Game</h2>
+            <!-- Social media share buttons would go here -->
+            <button class="btn" onclick="closePopup('share-popup')">Close</button>
+        </div>
+        <div id="rewards-popup" class="popup">
+            <h2>Rewards</h2>
+            <!-- Rewards list would go here -->
+            <button class="btn" onclick="closePopup('rewards-popup')">Close</button>
+        </div>
+        <div id="leaderboard-popup" class="popup">
+            <h2>Leaderboard</h2>
+            <!-- Leaderboard would go here -->
+            <button class="btn" onclick="closePopup('leaderboard-popup')">Close</button>
+        </div>
+        <div id="congrats-popup" class="popup">
+            <h2>Congratulations!</h2>
+            <p>You have scored 1000 points!</p>
+            <button class="btn" onclick="closePopup('congrats-popup')">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showLoginScreen() {
+            document.getElementById('splash-screen').classList.remove('active');
+            document.getElementById('login-screen').classList.add('active');
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            localStorage.setItem(username, password);
+            document.getElementById('login-screen').classList.remove('active');
+            document.getElementById('game-screen').classList.add('active');
+            startGame();
+        }
+
+        function startGame() {
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            let score = 0;
+            let bubbles = [];
+            const bubbleColors = ['#ff6666', '#66b3ff', '#99ff99', '#ffcc66'];
+            const bubbleScores = [10, 20, 30, 40];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            function createBubble() {
+                const radius = Math.random() * 20 + 10;
+                const x = Math.random() * (canvas.width - 2 * radius) + radius;
+                const y = canvas.height + radius;
+                const color = bubbleColors[Math.floor(Math.random() * bubbleColors.length)];
+                const score = bubbleScores[bubbleColors.indexOf(color)];
+                bubbles.push({x, y, radius, color, score});
+            }
+
+            function drawBubble(bubble) {
+                ctx.beginPath();
+                ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+                ctx.fillStyle = bubble.color;
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            function updateBubbles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                bubbles.forEach((bubble, index) => {
+                    bubble.y -= 2;
+                    if (bubble.y + bubble.radius < 0) {
+                        bubbles.splice(index, 1);
+                    } else {
+                        drawBubble(bubble);
+                    }
+                });
+            }
+
+            function checkCollision(x, y) {
+                bubbles.forEach((bubble, index) => {
+                    const dist = Math.sqrt((x - bubble.x) ** 2 + (y - bubble.y) ** 2);
+                    if (dist < bubble.radius) {
+                        score += bubble.score;
+                        document.getElementById('score').innerText = score;
+                        bubbles.splice(index, 1);
+                        if (score >= 1000) {
+                            showPopup('congrats-popup');
+                        }
+                    }
+                });
+            }
+
+            canvas.addEventListener('click', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                checkCollision(x, y);
+            });
+
+            setInterval(() => {
+                createBubble();
+            }, 1000);
+
+            function gameLoop() {
+                updateBubbles();
+                requestAnimationFrame(gameLoop);
+            }
+
+            gameLoop();
+        }
+
+        function showPopup(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closePopup(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function toggleAudio() {
+            // Implement audio toggle functionality
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+/***** theme customize *****/
+[data-theme="dark"] {
+   --main-color: #272b30;
+   --seconde-color: #32383e;
+   --color-text: #fff;
+   --btn-main-color: #272729;
+}
+
+[data-theme="light"] {
+   --main-color: #eeeeee;
+   --seconde-color: #909396;
+   --color-text: #000;
+   --btn-main-color: #414550;
+}
+
+.main-btn {
+   background-color: var(--btn-main-color);
+   color: var(--color-text);
+}
+
+.main-btn:hover {
+   background: linear-gradient(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.2));
+}
+
+.form-control,
+.form-control:focus {
+   background-color: var(--main-color);
+   color: var(--color-text);
+   border-color: var(--seconde-color);
+}
+
+.form-control::placeholder {
+   color: var(--color-text);
+}
+
+.badge-color {
+   background-color: var(--seconde-color);
+}
+
+/***** End theme customize *****/
+
+/***** Global *****/
+@import url("https://fonts.googleapis.com/css2?family=Nerko+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&display=swap");
+
+* {
+   transition: background-color 0.5s, color 0.2s;
+}
+
+body {
+   font-family: "Comfortaa", cursive;
+   min-height: 100%;
+   min-width: 100%;
+   background-color: var(--main-color);
+   color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-family: "Nerko One", cursive;
+   color: var(--color-text) !important;
+}
+
+a,
+p,
+span {
+   color: inherit !important;
+}
+
+ul {
+   list-style-position: inside;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+   appearance: none;
+   display: none;
+}
+
+.login .login-area,
+.register .register-area {
+   background-color: rgb(255 255 255 / 0.1);
+   backdrop-filter: blur(5px);
+}
+
+.nav-bg {
+   background-color: var(--main-color);
+}
+
+.nav-item .nav-link.active,
+.nav-item .nav-link:hover {
+   color: #09c !important;
+   transition: color 0.5s;
+}
+
+::-webkit-scrollbar {
+   width: 0.625rem;
+}
+
+::-webkit-scrollbar-track {
+   background-color: var(--seconde-color);
+}
+
+::-webkit-scrollbar-thumb {
+   background-color: var(--main-color);
+   border-radius: 50px;
+   box-shadow: 0 0 5px rgb(0 0 0 / 0.5) inset;
+   
+
+}
+/***** End Global *****/
+
+/***** Login *****/
+.login .image {
+   background: url("../assets/images/images/login.jpg") center / cover no-repeat;
+   min-height: 100%;
+   
+   
+}
+/***** End Login *****/
+
+/***** Register *****/
+
+.register .image {
+   background: url("../assets/images/images/register.jpg") center / cover no-repeat;
+   min-height: 100%;
+}
+/***** End Register *****/
+
+/***** Home *****/
+.home .card {
+   filter: grayscale(0.8);
+   transition: transform 0.5s, filter 0.5s 0.1s;
+}
+
+.home .card:hover {
+   transform: scale(1.05);
+   filter: grayscale(0);
+}
+/***** End Home *****/
+
+/***** Details *****/
+.details {
+   background-color: #272729be;
+
+   backdrop-filter: blur(4px);
+}
+/***** End Details *****/
+
+/***** Loader *****/
+.loading {
+   position: fixed;
+   z-index: 9999;
+   inset: 0;
+   background-color: #272b30e3;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.loader {
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   max-width: 6rem;
+   margin-top: 3rem;
+   margin-bottom: 3rem;
+ }
+ .loader:before,
+ .loader:after {
+   content: "";
+   position: absolute;
+   border-radius: 50%;
+   animation: pulsOut 1.8s ease-in-out infinite;
+   filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.75));
+ }
+ .loader:before {
+   width: 100%;
+   padding-bottom: 100%;
+   box-shadow: inset 0 0 0 1rem #fff;
+   animation-name: pulsIn;
+ }
+ .loader:after {
+   width: calc(100% - 2rem);
+   padding-bottom: calc(100% - 2rem);
+   box-shadow: 0 0 0 0 #fff;
+ }
+
+ @keyframes pulsIn {
+   0% {
+     box-shadow: inset 0 0 0 1rem #fff;
+     opacity: 1;
+   }
+   50%, 100% {
+     box-shadow: inset 0 0 0 0 #fff;
+     opacity: 0;
+   }
+ }
+
+ @keyframes pulsOut {
+   0%, 50% {
+     box-shadow: 0 0 0 0 #fff;
+     opacity: 0;
+   }
+   100% {
+     box-shadow: 0 0 0 1rem #fff;
+     opacity: 1;
+   }
+ }
+     
+   
+
+/***** End Loader *****/
+
+.breadcrumb-item + .breadcrumb-item::before {
+   color: var(--color-text);
+}
+
+#play{
+   filter: grayscale(0.7) !important;
+}
+#play:hover{
+   filter: grayscale(0) !important
+   ;
+}
+
+.breadcrumb a:hover{
+   color:rgb(13, 202, 240)  !important
+
+}

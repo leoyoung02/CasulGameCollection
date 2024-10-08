@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Homepage </title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" title="style" />
+  <link rel = "icon" href = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHsYGBhAmAjZcbyJ9snAmbzbSw9iqsmQRmCw&usqp=CAU"  type = "image/x-icon">
+  <script type="text/javascript">
+  function showDate() {
+    var d = new Date();
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth() + 1; //months are zero based
+    var curr_year = d.getFullYear();
+    document.write(curr_date + "-" + curr_month + "-" + curr_year);
+  }
+</script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">HTML5<span class="logo_colour">Games</span></a></h1>
+          <h2>Homepage</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="index.html">Home</a></li>
+          <li><a href="examples.html">Games</a></li>
+          <li><a href="page.html">History</a></li>
+          <li><a href="another_page.html">Sites</a></li>
+           <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>Latest News</h3>
+        <h4>Html 5 Games</h4>
+        <h5>April 20th, 2021</h5>
+        <p>Information about the following games.<br /><a href="#">Read more</a></p>
+        <p></p>
+        <h4>New games</h4>
+        <h5>May 18th, 2021</h5>
+        <p>Updates incoming.<br /><!--<a href="#">Read more</a>--></p>
+
+        <h4>Current Date</h4>
+        <p><script type="text/javascript">showDate();</script></p>
+        <h3>Useful Links (nothing here)</h3>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">link 1</a></li>
+          <li><a href="https://www.youtube.com/watch?v=3DxXa2lWPz0">link 2</a></li>
+          <li><a href="https://www.youtube.com/watch?v=1mrGdGMNsv0">link 3</a></li>
+          <li><a href="https://www.youtube.com/watch?v=G1IbRujko-A&t=85s">link 4</a></li>
+        </ul>
+        <h3>Search</h3>
+        <form method="post" action="#" id="search_form">
+          <p>
+            <input class="search" type="text" name="search_field" value="Enter keywords....." />
+            <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/search.png" alt="Search" title="Search" />
+          </p>
+        </form>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1>Welcome to the Html5 games homepage</h1>
+        <p> This is a simple site that showcases a few browser games and has a little history about them
+
+        </p>
+        <h2>Ways to interact with the following games</h2>
+        <p>Well you just play them from the games page or it sends you to a separate page to play.</p>
+        <ul>
+          <li>Space Invaders</li>
+          <li>2048</li>
+          <li>Tetris</li>
+          <li>Flappy Bird</li>
+          <li>Crazy Taxi</li>
+          <li>8 Ball</li>
+        </ul>
+        <p>And more to be added in the future.</p>
+      </div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer">
+      Copyright &copy; HTML5 Games | HTML5</a> | CSS</a>
+    </div>
+  </div>
+</body>
+</html>

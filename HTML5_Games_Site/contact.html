@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Contact</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" title="style" />
+  <link rel = "icon" href = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHsYGBhAmAjZcbyJ9snAmbzbSw9iqsmQRmCw&usqp=CAU"  type = "image/x-icon">
+
+<script type="text/javascript">
+  function showDate() {
+    var d = new Date();
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth() + 1; //months are zero based
+    var curr_year = d.getFullYear();
+    document.write(curr_date + "-" + curr_month + "-" + curr_year);
+  }
+</script>
+
+
+  <script type="text/javascript">
+function validateEmail(theForm) {
+if (/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/.test(theForm.email-id.value)){
+return(true);
+}
+alert("Invalid e-mail address! Please enter again carefully!.");
+return(false);
+}
+</script>
+
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+         <h1><a href="index.html">HTML5<span class="logo_colour">Games</span></a></h1>
+          <h2>Contact</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+         <li><a href="index.html">Home</a></li>
+          <li><a href="examples.html">Games</a></li>
+          <li><a href="page.html">History</a></li>
+          <li><a href="another_page.html">Sites</a></li>
+          <li class="selected"><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+       <h3>Latest News</h3>
+        <h4>Html 5 Games</h4>
+        <h5>April 7th, 2021</h5>
+        <p>Information about html5 games.<br /><a href="https://flashgaming.fandom.com/wiki/Flash_Gaming_Wiki">Read more</a></p>
+        <p></p>
+        <h4>Updates</h4>
+        <h5>May 14th, 2021</h5>
+        <p>Updates incoming.<br /><a href="#">Read more</a></p>
+        <h4>Current Date</h4>
+        <p><script type="text/javascript">showDate();</script></p>
+        <h3>Search</h3>
+        <form method="post" action="#" id="search_form">
+          <p>
+            <input class="search" type="text" name="search_field" value="Enter keywords....." />
+            <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/search.png" alt="Search" title="Search" />
+          </p>
+        </form>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1>Contact </h1>
+        <p>Introduce your information down here.</p>
+        <form action="#" method="post">
+          <div class="form_settings">
+            <p><span>Name</span><input class="contact" type="text" name="your_name" value="" /></p>
+            <p><span>Email Address</span><input class="contact" type="text" name="your_email" value="" /></p>
+            <p><span>Message</span><textarea class="contact textarea" rows="8" cols="50" name="your_enquiry"></textarea></p>
+            <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="contact_submitted" value="submit" /></p>         
+            <p style="padding-top: 0px"><span>&nbsp;</span><input class="submit" type="reset"  value="reset" /></p> 
+
+</form>
+          </div>
+        </form>
+        <p><br /><br /></p>
+      </div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer">
+      Copyright &copy; HTML5 Games | HTML5</a> | CSS</a>
+    </div>
+  </div>
+
+</body>
+</html>

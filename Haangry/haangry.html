@@ -1,0 +1,355 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Haangry !</title>
+</head>
+<body>
+
+<div id="interface">
+	<h1>Haangry !</h1>
+
+
+	<p>PRESS <span>ENTER</span><br>
+	<span>WASD</span> or <span>arrow keys</span> to move <br></p>
+
+</div>
+
+<div id="game" style="display:none">
+	<p class="timer">Time: <span id="timerScore"></span> seconds</p>
+	<p class="calories">Calories: <span id="caloriesScore">0</span> calories</p>
+</div>
+
+<div id="end" style="display:none">
+	<h1>Better Luck Next Time !</h1>
+	<p>You survived for <span id="finalTime"></span> seconds! <br>
+	You had <span id="finalCalories"></span> calories! <br>
+	Press "<span>R</span>" to retry!
+	</p>
+</div>
+
+<script>
+// set Animation Frame
+(function() {
+    var lastTime = 0;
+    var vendors = ['webkit', 'moz'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame =
+          window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+});
+
+var ballMadness = Foood = {};
+var timer = 0,
+	onInitialScreen = false;
+	
+	// getting images
+	candy = new Image()
+	candy.src = 'candy.png'
+	candy.onload = function() {
+}
+    truffle = new Image()
+	truffle.src = 'truffle.png'
+	truffle.onload = function() {
+}
+    cookie = new Image()
+	cookie.src = 'cookie.png'
+	cookie.onload = function() {
+}
+Foood.rand = function(min, max){
+	return ~~(Math.random() * (max-min+1) + min);
+};
+Foood.createCanvas = function(){
+    // creating the canvas element
+	Foood.canvas = document.createElement('canvas');
+	Foood.cw     = Foood.canvas.width  = 600;
+	Foood.ch     = Foood.canvas.height = 400;
+	Foood.ctx    = Foood.canvas.getContext('2d');
+	document.body.appendChild( Foood.canvas );
+};
+//creating interface 
+	Foood.createInterface = function(){
+		onInitialScreen = true;
+		Foood.ctx.clearRect(0, 0, Foood.cw, Foood.ch);
+		Foood.ctx.beginPath();
+		Foood.ctx.arc(300, 200, 50, 0, Math.PI*2, false);
+		Foood.ctx.closePath();
+		Foood.ctx.fill();
+        if (Foood.key.enter) {
+			document.getElementById('interface').style.display = 'none';
+			onInitialScreen = false;
+			cancelAnimationFrame(Foood.createInterface);
+			Foood.init();
+			return false;
+		}
+		requestAnimationFrame(Foood.createInterface);
+	}
+//creating ending screen 
+	Foood.createEndingScreen = function(){
+		Foood.ctx.clearRect(0, 0, Foood.cw, Foood.ch);
+
+		if (Foood.key.restart) {
+			document.getElementById('end').style.display = "none";
+			timer = 0;
+			Foood.score.calories = 0;
+			document.getElementById('caloriesScore').innerHTML = 0;
+			cancelAnimationFrame(Foood.createEndingScreen);
+			Foood.init();
+			return false;
+		}
+		requestAnimationFrame(Foood.createEndingScreen);
+	}
+//Player 
+Foood.Player = function(){};
+Foood.Player.prototype = {
+	x: 300,
+	y: 200,
+	radius: 50,
+	vel: 0,
+	eaten: 0,
+	alive: false,
+
+	render: function(){
+	r=Math.floor(Math.random()*255);
+g=Math.floor(Math.random()*255);
+b=Math.floor(Math.random()*255);
+		Foood.ctx.fillStyle = "rgb("+r+","+g+","+b+")";
+		Foood.ctx.beginPath();
+		Foood.ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
+		Foood.ctx.closePath();
+		Foood.ctx.fill();
+		this.alive = true;
+	},
+    update: function(){
+
+		// movement
+		if (Foood.key.up){
+
+			if (this.y - this.radius <= 0 || this.y -this.radius - this.vel <= 0){
+				this.y = this.radius;
+			} else {
+				this.y -= this.vel;
+			}
+		}
+
+		if (Foood.key.down){
+
+			if (this.y + this.radius >= Foood.ch || this.y + this.radius + this.vel >= Foood.ch){
+				this.y = Foood.ch - this.radius;
+			} else {
+				this.y += this.vel;
+			}
+		}
+		if (Foood.key.left){
+
+			if (this.x - this.radius <= 0 || this.x - this.radius - this.vel <=0){
+				this.x = this.radius;
+			} else{
+				this.x -= this.vel;	
+			}
+		}
+
+		if (Foood.key.right){
+
+			if (this.x + this.radius >= Foood.cw || this.x + this.radius + this.vel >= Foood.cw) {
+				this.x = Foood.cw - this.radius;
+			} else {
+				this.x += this.vel;	
+			}
+		}
+
+		//Updating radius 
+		this.radius -= .05;
+		this.vel = 200 / this.radius;
+
+		// death
+		if (this.radius <= 0) {
+			this.alive = false;
+			this.radius = 0;
+		}
+
+	},
+
+	radiusUp: function(){
+		this.eaten++;
+		this.radius += Foood.food.factor;
+	}
+};
+//Food
+Foood.Food = function(type){
+    this.type = type;
+
+	if ( type === 1 ) {
+		this.radius = 10;
+		this.factor = 3;
+		this.score = 3;
+		this.image = candy;
+	}
+
+	if ( type === 2 ) {
+		this.radius = 35;
+		this.factor = 1;
+		this.score = 1;
+		this.image = truffle;
+	}
+
+	if ( type === 3 ) {
+		this.radius = 25;
+		this.factor = 2;
+		this.score = 2;
+		this.image = cookie;
+	}
+
+	
+	this.x = Foood.rand(this.radius, Foood.cw - this.radius);
+	this.y = Foood.rand(this.radius, Foood.ch - this.radius);
+};
+
+Foood.Food.prototype = {
+	render: function(){
+		Foood.ctx.fillStyle = 'hsla(0, 100%, 50%, 0)';
+		Foood.ctx.beginPath();
+		Foood.ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
+		Foood.ctx.closePath();
+		Foood.ctx.fill();
+		Foood.ctx.drawImage(this.image, this.x - this.radius, this.y - this.radius);
+	}
+};
+//create Food 
+Foood.createFood = function(){
+	var foodType = Foood.rand(1, 3);
+
+	Foood.food = new Foood.Food( foodType );
+}
+//score 
+Foood.Score = function(){
+};
+Foood.Score.prototype = {
+	calories: 0,
+    updateCalories: function(foodtype){
+		calories = this.calories;
+		this.calories += foodtype;
+		document.getElementById('caloriesScore').innerHTML = this.calories;
+	},
+};
+Foood.handleCollision = function(){
+
+	var dist = Math.sqrt(
+			Math.pow(Foood.food.x - Foood.player.x, 2) +
+			Math.pow(Foood.food.y - Foood.player.y, 2)
+		);
+
+	if ( dist < Foood.food.radius + Foood.player.radius ) {
+		Foood.player.radiusUp();
+		Foood.createFood();
+		Foood.score.updateCalories(Foood.food.score)
+	}
+};
+Foood.handleFactor = function(){
+};
+Foood.key = {
+	up: false, // 87, 38
+	down: false, // 83, 40
+	left: false, // 65, 37
+	right: false, // 68, 39
+	enter: false, // 13
+	restart: false // 82
+};
+
+Foood.keyHandler = function(keycode, boo){
+	if (keycode === 87 || keycode === 38) {Foood.key.up = boo}
+	if (keycode === 83 || keycode === 40) {Foood.key.down = boo}
+	if (keycode === 65 || keycode === 37) {Foood.key.left = boo}
+	if (keycode === 68 || keycode === 39) {Foood.key.right = boo}
+	if (keycode === 13) {Foood.key.enter = boo}
+	if (keycode === 82) {Foood.key.restart = boo}
+};
+
+window.addEventListener('keydown', function(e){
+	Foood.keyHandler(e.keyCode, true);
+});
+
+window.addEventListener('keyup', function(e){
+	Foood.keyHandler(e.keyCode, false);
+});
+
+Foood.loop = function(){
+	Foood.ctx.clearRect(0, 0, Foood.cw, Foood.ch);
+
+	// player
+	Foood.player.render();
+	Foood.player.update();
+
+	// food
+	Foood.food.render();
+
+	// collision
+	Foood.handleCollision();
+
+	
+
+	// setting how much time you survived
+	document.getElementById('timerScore').innerHTML = timer.toFixed(1);
+
+	// making ending screen appear once you die, displaying final scores
+	if (!onInitialScreen) {
+	if (!Foood.player.alive) {
+		document.getElementById('game').style.display = 'none';
+		document.getElementById('end').style.display = 'block';
+		document.getElementById('finalTime').innerHTML = timer.toFixed(1);
+		document.getElementById('finalCalories').innerHTML = Foood.score.calories;
+		Foood.createEndingScreen();
+		Foood.gameState = false;
+	}
+}
+
+Foood.timer++;
+if ( Foood.timer == 6 ) {
+	timer += 0.10;
+	Foood.timer = 0;
+}
+
+if (Foood.gameState) {
+requestAnimationFrame(Foood.loop)
+}
+};
+Foood.init = function(){
+	document.getElementById('game').style.display = 'block';
+	Foood.timer = 0;
+	Foood.gameState = true;
+		// player
+	Foood.player = new Foood.Player();
+
+	// create Food
+	Foood.createFood();
+
+	// score
+	Foood.score = new Foood.Score();
+	// loop
+	Foood.loop();
+
+};
+
+Foood.createCanvas();
+Foood.createInterface();
+
+</script>
+
+</body>
+</html>
