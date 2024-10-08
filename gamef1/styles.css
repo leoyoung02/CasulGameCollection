@@ -1,0 +1,117 @@
+/* Estilos padrão para todos os dispositivos */
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: block;
+}
+
+body {
+  max-width: 850px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 30px;
+}
+
+#cheating {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#cheating button {
+  flex: 1;
+  padding: 10px;
+  margin: 0 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #dcdcdc;
+  cursor: pointer;
+}
+
+#cheating button:hover {
+  background-color: #e2e2e2;
+}
+
+.carro {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-image: url(img/carro.png);
+  background-size: cover;
+  bottom: 25px; /* Ajuste conforme necessário para centralizar na faixa */
+  
+}
+
+.pista {
+ 
+  max-width: 650px;
+  margin: -2px auto;
+  padding: 20px;
+  background: #808080;
+  width: auto;
+  overflow: hidden;
+  
+}
+
+.chegada {
+  float: right; /* Alinhar a linha de chegada à direita */
+  margin-top: -15px; /* Ajustar o espaço entre a linha de chegada e a pista */
+  margin-bottom: -100%;
+  width: 30px;
+  height: 80px;
+  background-image: url(img/chegada.png);
+  background-size: contain; /* Ajustar o tamanho da imagem */
+  background-repeat: no-repeat;
+  
+}
+
+.linha{
+  border-width: 2px;
+  border-style: dashed;
+  border-color: #ffff
+
+}
+
+.bandeira{
+  margin: 0 auto;
+  display: block;
+  width: 300px;
+  height: 150px;
+  background-size: cover;
+}
+
+
+
+
+
+#resultado {
+  font-weight: bold;
+}
+
+
+/* Filtros de cores para cada carro */
+#carro1 {
+  filter: hue-rotate(0deg); /* Mantém a cor original */
+}
+
+#carro2 {
+  filter: hue-rotate(90deg); /* Verde */
+}
+
+#carro3 {
+  filter: hue-rotate(200deg); /* Azul claro */
+}
+
+#carro4 {
+  filter: hue-rotate(30deg); /* Rosa */
+}
+
+#carro5 {
+  filter: hue-rotate(160deg); /* Amarelo */
+}

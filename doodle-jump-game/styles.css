@@ -1,0 +1,226 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+}
+
+.screen {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+}
+
+.start {
+  width: 352px;
+  height: 361px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 0;
+  margin: 0;
+  background-image: url("assets/post-it-3.png");
+  object-fit: contain;
+  font-size: 1rem;
+}
+
+.start-button {
+  border-radius: 40px;
+  padding: 20px;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  margin-top: 50px;
+  border-width: 5px;
+  width: 200px;
+  border: none;
+}
+
+.start-button:hover {
+  font-size: 1rem;
+  background-color: #f3d223;
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  margin-top: 50px;
+  border-width: 5px;
+  width: 200px;
+  border: none;
+}
+
+.instructions {
+  width: 352px;
+  height: 361px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  padding: 0;
+  margin: 0;
+  background-image: url("assets/post-it-3.png");
+  object-fit: contain;
+  font-size: 1rem;
+}
+
+.div1 {
+  padding-top: 3rem;
+  padding-left: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+}
+
+.return {
+  width: 25%;
+  background-color: black;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.return:hover {
+  background-color: #f3d223;
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.div2 {
+  text-align: center;
+  z-index: 1;
+  font-family: "Schoolbell", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gameover {
+  width: 352px;
+  height: 361px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 0;
+  margin: 0;
+  background-image: url("assets/post-it-3.png");
+  object-fit: contain;
+}
+
+h1 {
+  font-size: 3rem;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  z-index: 1;
+  font-family: "Schoolbell", cursive;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.read-rules {
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  z-index: 1;
+  font-family: "Schoolbell", cursive;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: underline;
+}
+
+.read-rules:hover {
+  color: green;
+}
+
+.score {
+  font-size: 3rem;
+  font-family: "Schoolbell", cursive;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  z-index: 1;
+  display: none;
+}
+
+.restart {
+  border-radius: 40px;
+  padding: 20px;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  margin-top: 50px;
+  border-width: 5px;
+  width: 200px;
+  border: none;
+}
+
+.restart:hover {
+  font-size: 1rem;
+  background-color: #f3d223;
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  margin-top: 50px;
+  border-width: 5px;
+  width: 200px;
+  border: none;
+}
+
+.platform {
+  background-image: url("assets/platform.png");
+  width: 120px;
+  height: 36px;
+  position: absolute;
+}
+
+.character {
+  width: 92px;
+  height: 92px;
+  background-image: url("assets/doodler-right.png");
+  --doodle-left-image: url("assets/doodler-left.png");
+  --doodle-right-image: url("assets/doodler-right.png");
+  position: absolute;
+  z-index: 1;
+}
+
+.isJumping {
+  animation: jump 400ms;
+}
+
+@keyframes jump {
+  50% {
+    top: 50%;
+  }
+}

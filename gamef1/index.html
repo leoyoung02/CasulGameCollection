@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<div lang="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corrida de Carros</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <img src="img/bandeira2.png" alt="bandeira" class="bandeira">
+  <div class="container">
+    <h1>Corrida de Carros</h1>
+        <p>Saldo: R$ <span id="saldo">100</span></p>
+        <label for="aposta">Aposta (mínimo R$5):</label>
+    <input type="number" id="aposta" min="5" value="5">
+    <select id="pilotos">
+      <option value="1">Piloto 1</option>
+      <option value="2">Piloto 2</option>
+      <option value="3">Piloto 3</option>
+      <option value="4">Piloto 4</option>
+      <option value="5">Piloto 5</option>
+    </select>
+  <br/>
+  <br/>
+  <br/>
+    <div id="cheating">
+      <button onclick="apostar()">Apostar</button>
+      <button onclick="comprarItem(7)">Comprar (+Velocidade)</button>
+      <button onclick="comprarItem(5)">Comprar (-Velocidade Todos)</button>
+      <button onclick="comprarItem(10)">Comprar (-Diminuir Adversário na Frente)</button>
+    </div>
+    <div class="container">
+      <div class="pista" id="pista">
+        <div class="chegada"></div>
+        <div class="carro" id="carro1"></div>
+      </div>
+      <div class="linha"></div>
+
+      <div class="pista" id="pista">
+        <div class="chegada"></div>
+        <div class="carro" id="carro2"></div>
+      </div>
+      <div class="linha"></div>
+
+      <div class="pista" id="pista">
+        <div class="chegada"></div>
+        <div class="carro" id="carro3"></div>
+      </div>
+      <div class="linha"></div>
+
+      <div class="pista" id="pista">
+        <div class="chegada"></div>
+        <div class="carro" id="carro4"></div>
+      </div>
+      <div class="linha"></div>
+
+      <div class="pista" id="pista">
+        <div class="chegada"></div>
+        <div class="carro" id="carro5"></div>
+      </div>
+      
+
+      <p id="resultado"></p>
+    </div>
+  <script src="script.js"></script>
+</body>
+</html>

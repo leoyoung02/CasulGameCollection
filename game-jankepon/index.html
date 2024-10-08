@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jankenpon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Jankenpon - Batu, Gunting, Kertas</h1>
+    <div id="game">
+        <div class="choices">
+            <button onclick="play('batu')">
+                <img src="images/batu.png" alt="Batu">
+            </button>
+            <button onclick="play('gunting')">
+                <img src="images/gunting.png" alt="Gunting">
+            </button>
+            <button onclick="play('kertas')">
+                <img src="images/kertas.png" alt="Kertas">
+            </button>
+        </div>
+        <div id="result" class="hidden">
+            <div class="result-container">
+                <div class="result-box" id="user-box">
+                    <img id="user-icon" src="" alt="Pilihan Anda">
+                    <p id="user-text">Pilihan Anda</p>
+                </div>
+                <div class="result-box" id="computer-box">
+                    <img id="computer-icon" src="" alt="Pilihan Komputer">
+                    <p id="computer-text">Pilihan Komputer</p>
+                </div>
+            </div>
+            <div id="outcome">
+                <p id="outcome-text"></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

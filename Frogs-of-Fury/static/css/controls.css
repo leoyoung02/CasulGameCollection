@@ -1,0 +1,115 @@
+:root {
+  --primary-color: #00000b;
+  --shadow-color: rgb(0, 0, 11, 1);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  /*background-color: #f0f0f0;*/
+  padding: 20px;
+  /* Add the background */
+  background-image: url("../Images/controls_page.png");
+  background-size: cover; /* Make the image cover the entire screen */
+  background-position: center; /* Center the image on the screen */
+  background-repeat: no-repeat;
+}
+
+.player-section {
+  margin: 20px 0;
+  width: 300px;
+}
+
+.control-item {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+}
+
+.control-item:hover {
+  background-color: #e0e0e0;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+#modal.show {
+  display: block;
+}
+
+/* Main styling of the body */
+
+#player1-section,
+#player2-section {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.header_controls {
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+li {
+  text-align: start;
+}
+
+#header_rules {
+  margin-bottom: 20px;
+}
+
+.volume-control {
+  text-align: center;
+}
+input[type="range"] {
+  width: 300px;
+}
+
+#saveButton {
+  all: unset;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+}
+
+#saveButton:hover {
+  outline: none;
+  background-color: #e0e0e0;
+}
+
+.nav-link {
+  position: relative;
+  padding: 10px;
+  transition: border-color 0.3s ease;
+  border-bottom: rgba(255, 255, 255, 0.8) 2px solid;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid #00ff00;
+}
+
+.navbar-toggler:hover {
+  border: 2px solid #00ff00;
+}

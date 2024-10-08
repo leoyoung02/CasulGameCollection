@@ -1,0 +1,55 @@
+body{
+    background-color: #393E46;
+}
+
+.main_div {
+
+    display: grid;
+    grid-template-rows: inherit inherit;
+    justify-content: center;
+
+    margin-top: 50px;
+}
+
+.heading_div {
+
+    display: flex;
+    justify-content: center;
+}
+
+.heading {
+    font-size: 150px;
+    color:rgb(192, 232, 58);
+
+    margin: 0;
+}
+
+.player_div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 30px;
+}
+
+.pl_1, .pl_2 {
+
+    display: grid;
+    grid-row: inherit inherit;
+}
+
+.pla {
+
+    display: flex;
+    justify-content: center;
+}
+
+.player {
+
+    font-size: 30px;
+    color: rgb(43, 226, 198);
+}
+
+.image_div {
+
+    display: flex;
+    justify-content: center;
+}
